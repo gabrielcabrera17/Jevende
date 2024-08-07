@@ -1,0 +1,42 @@
+.tableCarrito {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.headCarrito th, .bodyCarrito td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.tableCarrito th {
+    background-color:#181818;
+    color: #FFFFFF;
+}
+
+.tdImgCarrito {
+    width: 120px;
+    text-align: center;
+}
+
+.imgCarrito {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.containerCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.totalProducto{
+   margin: 50px 700px 0px 0px;
+   font-size: 20px;
+   font-weight: 800;
+   text-align: end;
+}
