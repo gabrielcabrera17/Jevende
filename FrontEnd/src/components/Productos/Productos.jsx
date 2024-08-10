@@ -8,7 +8,7 @@ const Productos = ({ aumentoCarro, setAumentoCarro, agregarProductosAlCarrito })
 
     useEffect(() => {
         const obtenerProductos = async () => {
-            const url = 'http://localhost:8080/api/products';
+            const url = 'http://localhost:8080/api/productos';
             try {
                 const respuesta = await fetch(url, {
                     method: 'GET',
@@ -20,7 +20,7 @@ const Productos = ({ aumentoCarro, setAumentoCarro, agregarProductosAlCarrito })
 
                 if (respuesta.ok) {
                     const resultado = await respuesta.json();
-                    setProductos(resultado);
+                    setProductos(resultado.productos);
                 } else {
                     console.error('Error en la respuesta del servidor:', respuesta.status);
                 }

@@ -12,7 +12,7 @@ const Login = () => {
 
 const autenticacionUsuario = async (e) => {
     e.preventDefault();
-    const url = 'http://localhost:8080/api/usuario/login';
+    const url = 'http://localhost:8080/api/login';
     const config = {
         method: 'POST',
         headers: {
