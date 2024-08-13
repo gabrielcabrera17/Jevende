@@ -5,6 +5,8 @@ import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; //
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo2.png'
+//import { faHouse } from '@awesome.me/kit-KIT_CODE/icons/classic/solid'
+
 
 
 const Header = ({aumentoCarro}) => {
@@ -18,9 +20,11 @@ const Header = ({aumentoCarro}) => {
                     <div className="item-menu-inicio">
                         Inicio
                     </div>
+                    
                     <div className="item-menu-categoria">
-                        Categoria
+                        Categorias 
                     </div>
+                   
                     <div className="item-menu-nuevo">
                         Nuevo
                     </div>

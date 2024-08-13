@@ -77,7 +77,7 @@ module.exports.login = (req, res) => {
                     email: usuario.email
                 };
 
-                jwt.sign(infoEnToken, SECRETO, { expiresIn: '5m' }, (error, token) => {
+                jwt.sign(infoEnToken, SECRETO, { expiresIn: '1m' }, (error, token) => {
                     if(error){
                         return res.status(400).json({ message: 'Error al generar el token: ' + error });
                     }

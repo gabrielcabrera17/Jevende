@@ -1,7 +1,7 @@
 const Producto = require('../model/ModelProducto');
 
 module.exports.agregarProducto = (req, res) => {
-    const { nombre, precio, stock, codigo, tamanio, descripcion, marca } = req.body;
+    const { nombre, precio, stock, codigo, tamanio, descripcion, marca,categoria } = req.body;
     const imagen = req.file;
 
     if (!imagen) {
@@ -16,7 +16,8 @@ module.exports.agregarProducto = (req, res) => {
         codigo,
         tamanio,
         descripcion,
-        marca
+        marca,
+        categoria
     });
 
     nuevoProducto.save()
