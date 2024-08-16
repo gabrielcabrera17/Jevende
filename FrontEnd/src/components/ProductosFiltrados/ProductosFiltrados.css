@@ -1,0 +1,101 @@
+/* ProductosFiltrados.css */
+
+.containerFiltrados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 75px;
+    margin-left: 10px;/* Ajusta según el ancho del área de filtrado */
+    justify-content: flex-start; /* Alinea los productos a la izquierda */
+}
+
+.productCard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s ease;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro de la tarjeta */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+
+.productCard:hover {
+    transform: translateY(-5px);
+}
+
+.productCard img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover; 
+    
+}
+
+.productCard h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.productCard p {
+    font-size: 16px;
+    color: #666;
+}
+
+.productCard .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.botonFiltrado{
+    background-color: #f9c229e0;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.cardFooter{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.areaDeFiltrado{
+    background-color: #181818;
+    border-radius: 3px;
+    margin-top: 95px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+.containerProductosFiltrados{
+   display: flex;
+}
+.botonFiltradoMarca{
+    background-color: #f9c229e0;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.resultadoFiltrado{
+    margin: 5px 17px 0px 0px;
+    text-align: center;
+}
+
