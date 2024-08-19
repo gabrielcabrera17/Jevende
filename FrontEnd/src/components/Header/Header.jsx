@@ -1,7 +1,7 @@
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
+import {  faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo2.png';
@@ -11,18 +11,18 @@ import { useEffect, useState } from 'react';
 import { useNavigate, } from 'react-router-dom';
 
 
-const Header = ({aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito,  setAumentoCarro }) => {
+const Header = ({ aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, setAumentoCarro }) => {
     const [open, setOpen] = useState(false);
-   // const [productosAMostrar, setProductosAMostrar] = useState([]);
     const [productos, setProductos] = useState([]);
     const navigate = useNavigate();
+
     const actualizarOpen = () => {
         setOpen(!open);
     }
 
     useEffect(() => {
         const url = 'http://localhost:8080/api/productos';
-        const mostrarProducto = async ()  => {
+        const mostrarProducto = async () => {
             try {
                 const respuesta = await fetch(url, {
                     method: 'GET',
@@ -34,8 +34,8 @@ const Header = ({aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, 
 
                 if (respuesta.ok) {
                     const resultado = await respuesta.json();
-                   // setProductosAMostrar(resultado.productos);
                     setProductos(resultado.productos);
+                   // Mostrar todos los productos al inicio
                 } else {
                     console.error('Error en la respuesta del servidor:', respuesta.status);
                 }
@@ -47,24 +47,26 @@ const Header = ({aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, 
         mostrarProducto();
     }, []);
 
-    const filtrarProductos = (categorias) =>{
+    const filtrarProductos = (categorias) => {
         const productoFiltrado = productos.filter(producto => producto.categoria === categorias);
         setProductosAMostrar(productoFiltrado);
         setOpen(false);
         navigate('/filtrados');
     }
 
+   
+
     return (
         <div className="Header">
             <div className="item-headers">
                 <div className="logo">
-                    <img  className="logo-img" src={logo} alt="logo"/>
+                    <img className="logo-img" src={logo} alt="logo" />
                 </div>
                 <div className="items-menu-titulos">
                     <div className="item-menu-inicio">
                         Inicio
                     </div>
-                    
+
                     <div className="item-menu-categoria">
                         <button className='botonCategoria' onClick={actualizarOpen}>Categorias <FontAwesomeIcon icon={faAngleDown} /> </button>
                         {open ? (
@@ -83,20 +85,16 @@ const Header = ({aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, 
                                 </li>
                             </ul>
                         ) : null}
-                       
+
                     </div>
-                   
+
                     <div className="item-menu-nuevo">
                         Nuevo
                     </div>
                     <div className="item-menu-popular">
                         Popular
                     </div>
-                    
-                </div>
-                <div className='item-buscador'>
-                    <input className="input-buscador" type="text" placeholder="Buscar..."/>
-                    <FontAwesomeIcon icon={faSearch} />
+
                 </div>
                 <div className='item-menu-iconos'>
                     <FontAwesomeIcon icon={faHeartRegular} />
@@ -105,13 +103,27 @@ const Header = ({aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, 
                     <FontAwesomeIcon icon={faUser} />
                 </div>
             </div>
-
-            
+            {/*<div className='cardProduct'>
+                {mostrarBusqueda.map((producto, index) => (
+                    <div key={index}>
+                        <h1>{producto.nombre}</h1>
+                        <div>
+                            {producto.imagen ? (
+                                <img className="imgProduct" src={`http://localhost:8080${producto.imagen}`} alt={producto.nombre} />
+                            ) : (
+                                <p>No hay imágenes disponibles</p>
+                            )}
+                        </div>
+                        <p>{producto.descripcion}</p>
+                        <div className='cardFooter'>
+                            <p>Precio: {producto.precio} Gs</p>
+                            {/*<button onClick={() => aumentoCarrito(producto)} className='btnAdd'>Agregar</button>}
+                        </div>
+                    </div>
+                ))}
+            </div>
+            */}
            
-                
-          
-            
-
         </div>
     );
 }

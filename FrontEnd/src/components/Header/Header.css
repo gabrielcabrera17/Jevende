@@ -94,3 +94,16 @@
     text-decoration: none;
     color: white;
 }
+
+.buscadorGeneral{
+   border: none;
+   background-color: transparent;
+   color: white;
+}
+.searchResult{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 300px;
+    background-color: #181818;
+}

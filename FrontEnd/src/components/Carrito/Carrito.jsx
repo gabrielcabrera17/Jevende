@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Carrito.css';
 import { Elements } from '@stripe/react-stripe-js';
-import { stripePromise } from '../../stripeConfig';
+//import { stripePromise } from '../../stripeConfig';
 import CheckoutForm from '../CheckOutForm/ChekOutForm'; // Asegúrate de crear este componente
 
 const Carrito = ({ productoAgregado = [] }) => {
@@ -80,9 +80,9 @@ const Carrito = ({ productoAgregado = [] }) => {
             <table className='totalProducto'>
                 <td className='total'>Total: {formatoPrecio(precioTotal()) + " Gs"}</td>
             </table>
-            <Elements stripe={stripePromise}>
+            {/*<Elements stripe={stripePromise}>
                 <CheckoutForm totalAmount={precioTotal()} />
-            </Elements>
+            </Elements>*/}
         </div>
     );
 }

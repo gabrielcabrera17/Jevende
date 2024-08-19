@@ -36,11 +36,25 @@ const ProductosFiltrados = ({ productosAMostrar }) => {
  return (
     <div className='containerProductosFiltrados'>
         <div className='areaDeFiltrado'>
-                <h1>Filtrar</h1>
+                <h1>FILTRAR</h1>
+                <h2>TECNOLOGÍA</h2>
                 <form>
                     <input type="checkbox" value={"Samsung"} onChange={marcaSeleccionada} /> Samsung
                     <input type="checkbox" value={"Xiaomi"} onChange={marcaSeleccionada}/> Xiaomi
                     <input type="checkbox" value={"Sony"} onChange={marcaSeleccionada}/> Sony
+                </form>
+                <h2>ROPA</h2>
+                <form>
+                    <input type="checkbox" value={"Lacoste"} onChange={marcaSeleccionada} /> Lacoste
+                    <input type="checkbox" value={" Psycho Bunny"} onChange={marcaSeleccionada}/> Psycho Bunny
+                </form>
+                <h2>ÓPTICA</h2>
+                <form>
+                    <input type="checkbox" value={"Alex"} onChange={marcaSeleccionada} /> Alex
+                </form>
+                <h2>PERFUMERÍA</h2>
+                <form>
+                    <input type="checkbox" value={"LANCOME"} onChange={marcaSeleccionada}/> LANCOME
                 </form>
                 <button className='botonFiltradoMarca' onClick={filtrarPorMarca}>Filtrar</button>
                 {marcas && <p className='resultadoFiltrado'>Se encontraron {marcas.length} resultados</p>}
