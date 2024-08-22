@@ -17,7 +17,7 @@ const UsuarioSchema = mongoose.Schema({
      },
      rol:{
         type: String,
-        required: true,
+        default: 'usuario',
      }
 })
 

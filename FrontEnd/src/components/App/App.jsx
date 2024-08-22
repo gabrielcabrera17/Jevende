@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from '../Login/Login';
 import ProteccionRuta from '../ProteccionRuta/ProteccionRuta'; // Importa el componente de protección de rutas
 import ProductosFiltrados from '../ProductosFiltrados/ProductosFiltrados';
+import RegistroUsuario from '../RegistroUsuario/RegistroUsuario';
 
 const App = () => {
   const [aumentoCarro, setAumentoCarro] = useState(0);
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/home' element={<ProteccionRuta element={() => <Home aumentoCarro={aumentoCarro} setAumentoCarro={setAumentoCarro} agregarProductosAlCarrito={agregarProductosAlCarrito} setProductosAMostrar={setProductosAMostrar}/>} />} />
           <Route path='/carrito' element={<ProteccionRuta element={() => <Carrito productoAgregado={productoAgregado}/>} />} />
           <Route path='/filtrados' element={<ProductosFiltrados productosAMostrar={productosAMostrar} />}/>
+          <Route path='/registro' element={<RegistroUsuario/>} />
         </Routes>
       </div>
   );

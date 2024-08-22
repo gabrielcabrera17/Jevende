@@ -12,7 +12,7 @@ const validarToken = ((req, res, next)=>{
             nombre: decodificado.nombre,
             email: decodificado.email
         }
-
+        req.infoUsuario = decodificado;
         next();
     })
 })

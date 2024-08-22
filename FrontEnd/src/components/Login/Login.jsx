@@ -1,13 +1,14 @@
 import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-
+import RegistroUsuario from '../RegistroUsuario/RegistroUsuario';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [abrirModal, setAbrirModal] = useState(false);
   
 
 const autenticacionUsuario = async (e) => {
@@ -58,8 +59,25 @@ const autenticacionUsuario = async (e) => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             {error && <p className="login-error">{error}</p>}
-            <button type="submit" className="login-button">Login</button>
+            <div className='buttons'>
+                <button type="submit" className="login-button">Login</button>
+                <button
+                    type="button"
+                    className='registro-button'
+                    onClick={() => setAbrirModal(true)}
+                >
+                    Registrarse
+                </button>
+            </div>
         </form>
+        {abrirModal &&(
+                <div className='modal'>
+                    <div className='modal-contenido'>
+                        <button className='colase-button' onClick={() => setAbrirModal(false)}>Cancelar</button>
+                        <RegistroUsuario />
+                    </div>
+                </div>
+            )}
     </div> 
     );
 };

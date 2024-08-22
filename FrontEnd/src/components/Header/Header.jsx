@@ -14,6 +14,7 @@ import { useNavigate, } from 'react-router-dom';
 const Header = ({ aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito, setAumentoCarro }) => {
     const [open, setOpen] = useState(false);
     const [productos, setProductos] = useState([]);
+    const [datoUsuario, setDatoUsuario] = useState([]);
     const navigate = useNavigate();
 
     const actualizarOpen = () => {
@@ -45,6 +46,35 @@ const Header = ({ aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito,
         }
 
         mostrarProducto();
+    }, []);
+
+    
+    useEffect(() => {
+        const url = 'http://localhost:8080/api/usuarios';
+        const mostrarDatoUsuario = async () => {
+            try {
+                const respuesta = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'token': localStorage.getItem('token')
+                    }
+                });
+
+                if (respuesta.ok) {
+                    const resultado = await respuesta.json();
+                    setDatoUsuario(resultado.usuarios);
+                    console.log(datoUsuario);
+                   // Mostrar todos los productos al inicio
+                } else {
+                    console.error('Error en la respuesta del servidor:', respuesta.status);
+                }
+            } catch (error) {
+                console.error('Error al obtener los datos del usuario:', error);
+            }
+        }
+
+        mostrarDatoUsuario();
     }, []);
 
     const filtrarProductos = (categorias) => {
@@ -101,6 +131,11 @@ const Header = ({ aumentoCarro, setProductosAMostrar, agregarProductosAlCarrito,
                     <Link className='linkCarrito' to="/carrito" ><FontAwesomeIcon icon={faShoppingCart} /> </Link>
                     <span className='aumentoCarrito'>{aumentoCarro}</span>
                     <FontAwesomeIcon icon={faUser} />
+                    {datoUsuario.map((dato,index)=>{
+                        return <p key={index}>{dato.nombres}</p>
+                    })
+
+                    }
                 </div>
             </div>
             {/*<div className='cardProduct'>

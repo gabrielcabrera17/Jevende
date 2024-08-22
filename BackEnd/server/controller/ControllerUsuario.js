@@ -12,7 +12,7 @@ module.exports.agregarUsuario = async (req, res) => {
     const saltGenerado = bcrypt.genSaltSync(10); // Asegúrate de que saltGenerado esté definido
     const passwordEncriptada = bcrypt.hashSync(password, saltGenerado);
 
-    if (!nombre || !email || !password || !rol) {
+    if (!nombre || !email || !password ) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios' });
     }
 
@@ -74,10 +74,11 @@ module.exports.login = (req, res) => {
             if(bcrypt.compareSync(password, usuario.password)){
                 const infoEnToken = {
                     nombre: usuario.nombre,
-                    email: usuario.email
+                    email: usuario.email,
+                    rol: usuario.rol
                 };
 
-                jwt.sign(infoEnToken, SECRETO, { expiresIn: '1m' }, (error, token) => {
+                jwt.sign(infoEnToken, SECRETO, { expiresIn: '20m' }, (error, token) => {
                     if(error){
                         return res.status(400).json({ message: 'Error al generar el token: ' + error });
                     }
